@@ -11,9 +11,17 @@ This is a simple chef recipe to automate the standard lock down steps on a fresh
 - Allow SSH traffic through the firewall
 - Allow any pre defined traffic through the firewall
 
+## Firewall
+
+This recipe will look for a key firewall_allow in the node definition.
+If it is defined it will expect it to be an array of hashes in the form:
+
+{ip: an_ip_address, port; a_port}
+
+For each rule, the specified ip address will be granted access to the
+specified port on the current node.
+
 ## Root Login
 
-Root login is left as enabled. This is primarily to make chef
-deployments easy. It's also unclear what the benefit in disabling root
-login is, if a malicious party is getting SSH access to ANY account when
-an SSH key is required for auth you're in trouble anyway. 
+Root login is left as enabled. It's unclear what the benefit of
+disabling it is when password auth is disabled.
