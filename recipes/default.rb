@@ -21,18 +21,6 @@ file '/etc/apt/apt.conf.d/10periodic' do
   EOF
 end
 
-# TODO should specify which locals to load in the node file
-
-bash 'adding GB locales' do
-  user 'root'
-  code <<-EOC
-    echo "en_GB ISO-8859-1" >> /var/lib/locales/supported.d/local
-    echo "en_GB.UTF-8 UTF-8" >> /var/lib/locales/supported.d/local
-    dpkg-reconfigure locales
-    update-locale
-  EOC
-end
-
 # updated time from central server every day, particularly important
 # when certs are involved.
 
