@@ -56,19 +56,21 @@ bash 'ssh hardening' do
   EOC
 end
 
-# now allow SSH traffic through the firewall and restart SSH
-bash "opening ufw for ssh traffic" do
-  user "root"
-  code <<-EOC
-ufw allow 22
-ufw --force enable
-ufw allow 22
-  EOC
-end
-
 service 'ssh' do
   action :restart
 end
+
+# now allow SSH traffic through the firewall and restart SSH
+# unless otherwise specified, block everything
+bash "opening ufw for ssh traffic" do
+  user "root"
+  code <<-EOC
+  ufw default deny
+  ufw allow 22
+  ufw --force enable
+  EOC
+end
+
 
 # if we've specified firewall rules in the node definition
 # then apply them here
