@@ -73,7 +73,8 @@ end
 
 
 # if we've specified firewall rules in the node definition
-# then apply them here
+# then apply them here. These should be in the format:
+# {"port": "x", "ip": "xxx.xxx.xxx.xxx"}
 if node['firewall_allow']
   node['firewall_allow'].each do |rule|
     bash "open ufw from #{rule['ip']} on port #{rule['port']}" do
