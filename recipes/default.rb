@@ -56,7 +56,6 @@ sshd_config = '/etc/ssh/sshd_config'
 
 # changes to make to the config file
 seds = [
-  #'s/^PermitRootLogin yes/PermitRootLogin no/g',
   's/^#PasswordAuthentication yes/PasswordAuthentication no/g',
   's/^X11Forwarding yes/X11Forwarding no/g',
   's/^UsePAM yes/UsePAM no/g'
