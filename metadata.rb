@@ -1,4 +1,4 @@
-name              "tlq-basic-security"
+name              "basic_security-tlq"
 maintainer        "Ben Dixon"
 maintainer_email  "ben@talkingquickly.co.uk"
 description       "Locks down a basic Ubuntu Install. E.g. remove SSH password & root login etc"
